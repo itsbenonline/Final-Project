@@ -1,0 +1,67 @@
+PROJECT:
+
+The most anoying box in the world! Using a car horn, Mosfet, 9V, arduino and a LDR I created a light sensictive box that would
+et the car horn off when you would open it. This project was created so I could send this box to freinds over the mail, have them
+open it and get a lovely reaction.
+Schematic:
+https://drive.google.com/open?id=0BzV-jAVDzWUobHRaSGJ5QW51U2M
+
+
+CODE:
+
+int Testpin = 3; //somebs
+int LDR_Pin = A0; //analog pin 0
+
+void setup(){
+  Serial.begin(9600);
+}
+
+void loop(){
+  int LDRReading = analogRead(LDR_Pin); 
+
+  
+  //If statement, If its dark the resistanve will be higher than 950. If light, resitance will be lower.
+  
+  if (LDRReading < 950) {
+   analogWrite(Testpin, HIGH); 
+} else {
+  analogWrite(Testpin, LOW);
+}
+
+
+Serial.println(LDRReading);
+}
+
+
+
+HOW:
+
+LDR- Light Dependent Resistor.
+Arudnio-Microcontroller 
+Car Horn- Appriatice that is normaly connected to a vehicial that emits a loud sound 60DB+ It is normaly 12Volts
+
+Process/dbug:
+Using the aurduino libary I mesured the resistance relitvae to light how can we process the data from LDR
+Analog input. Changed. values all good. resitance high when dark, Low when light.
+
+Add if statement in code,  
+if (LDRReading < 950) {
+   analogWrite(Testpin, HIGH); 
+} else {
+  analogWrite(Testpin, LOW);
+}
+
+Mosfet time.. Gate Control Dump
+Why the F wont it work with Digital? digital is on and off? so sending a high to the gate should open the mosfet... 
+Changed value after hours to Analog, then finally would the gate, open and allow flow out of Dump. 
+
+Two 9Volts in series. Gave like 19Volts to the horn. LOUD. 
+Dont use hands in acetone. Ferrofluid is comming!
+
+
+Here is the Schematic: 
+https://drive.google.com/open?id=0BzV-jAVDzWUobHRaSGJ5QW51U2M
+
+
+
+
